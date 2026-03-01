@@ -8,7 +8,7 @@ export default function AdminAuth({ children }: { children: React.ReactNode }) {
 
   const checkPassword = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordInput === "admin") {
+    if (passwordInput === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       setIsAuthenticated(true);
       setError(false);
     } else {

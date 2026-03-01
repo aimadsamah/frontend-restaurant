@@ -116,7 +116,7 @@ export default function AdminMessagesPage() {
   return (
     <AdminAuth>
       <div className="min-h-screen bg-[#0F0F0F] text-stone-300 p-8 md:p-12">
-        <header className="flex justify-between items-center mb-12">
+        <header className="flex justify-between items-center mb-12 mt-20">
           <h1 className="text-xl text-white tracking-widest uppercase">
             Messages{" "}
             <span className="text-stone-600 ml-2">({messages.length})</span>

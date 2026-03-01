@@ -37,7 +37,8 @@ export default function AdminMenu() {
 
   const handleLogin = (e: any) => {
     e.preventDefault();
-    if (password === "admin") setIsAuthenticated(true);
+    if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD)
+      setIsAuthenticated(true);
   };
 
   // 2. GESTION DE L'IMAGE (LECTURE DU FICHIER)
@@ -151,7 +152,7 @@ export default function AdminMenu() {
 
   return (
     <div className="min-h-screen bg-[#0F0F0F] text-stone-300 pb-20">
-      <header className="sticky top-0 z-30 bg-[#0F0F0F]/90 backdrop-blur-xl border-b border-white/5 p-6 pt-20">
+      <header className="sticky top-0 z-30 bg-[#0F0F0F]/90 backdrop-blur-xl border-y   border-white/5 p-6 mt-20">
         <div className="max-w-5xl mx-auto flex justify-between items-center">
           <h1 className="text-xl text-white font-light tracking-tight">
             Gestionnaire Menu
