@@ -4,6 +4,16 @@ import { useState, useEffect } from "react";
 import Dish from "@/components/Dish";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+interface DishType {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
+  status: string;
+}
+
 // On garde les intros car elles ne sont pas dans votre modèle BDD actuel
 const categoryIntros = {
   entree:
@@ -22,7 +32,7 @@ const categories = [
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState("entree");
-  const [dishes, setDishes] = useState([]);
+  const [dishes, setDishes] = useState<DishType[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Appel à l'API
