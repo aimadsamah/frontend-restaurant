@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const API_URL = "http://localhost:5000/api/messages";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 interface Message {
   name: string;
@@ -23,7 +23,7 @@ export default function Contact() {
   // Charger les messages
   const fetchMessages = async () => {
     try {
-      const res = await fetch(`${API_URL}/find`);
+      const res = await fetch(`${API_URL}/api/messages/find`);
       if (!res.ok) throw new Error("Erreur lors du chargement");
       const data = await res.json();
       setItems(data);
@@ -39,7 +39,7 @@ export default function Contact() {
     setError(null);
 
     try {
-      const res = await fetch(`${API_URL}/add`, {
+      const res = await fetch(`${API_URL}/api/messages/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newMessage),

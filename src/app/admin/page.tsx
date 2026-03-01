@@ -11,7 +11,7 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 
-const API_URL = "http://localhost:5000/api/dishes";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function AdminMenu() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,7 +23,7 @@ export default function AdminMenu() {
   // 1. CHARGER LES DONNÉES
   const fetchDishes = async () => {
     try {
-      const res = await fetch(`${API_URL}/find`);
+      const res = await fetch(`${API_URL}/api/dishes/find`);
       const data = await res.json();
       setItems(data);
     } catch (err) {
@@ -57,7 +57,7 @@ export default function AdminMenu() {
   const toggleVisibility = async (item: any) => {
     const newStatus = item.status === "oui" ? "non" : "oui";
     try {
-      await fetch(`${API_URL}/update/${item._id}`, {
+      await fetch(`${API_URL}/api/dishes/update/${item._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -71,7 +71,7 @@ export default function AdminMenu() {
   const handleDelete = async (id: string) => {
     if (window.confirm("Supprimer ce plat définitivement ?")) {
       try {
-        const res = await fetch(`${API_URL}/delete/${id}`, {
+        const res = await fetch(`${API_URL}/api/dishes/delete/${id}`, {
           method: "DELETE",
         });
 
@@ -94,8 +94,8 @@ export default function AdminMenu() {
     e.preventDefault();
     const method = editingItem._id ? "PUT" : "POST";
     const url = editingItem._id
-      ? `${API_URL}/update/${editingItem._id}`
-      : `${API_URL}/add`;
+      ? `${API_URL}/api/dishes/update/${editingItem._id}`
+      : `${API_URL}/api/dishes/add`;
 
     try {
       const res = await fetch(url, {

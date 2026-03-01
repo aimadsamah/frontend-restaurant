@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Dish from "@/components/Dish";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // On garde les intros car elles ne sont pas dans votre modèle BDD actuel
 const categoryIntros = {
@@ -29,8 +30,8 @@ export default function Menu() {
     const fetchDishes = async () => {
       try {
         setLoading(true);
-        // Remplacez l'URL par votre endpoint réel (ex: http://localhost:5000/api/dishes/find)
-        const response = await fetch("http://localhost:5000/api/dishes/find");
+
+        const response = await fetch(`${API_URL}/api/dishes/find`);
         const data = await response.json();
         setDishes(data);
       } catch (error) {

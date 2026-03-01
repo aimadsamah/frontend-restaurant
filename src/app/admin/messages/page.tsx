@@ -19,7 +19,7 @@ export default function AdminMessagesPage() {
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
 
-  const API_URL = "http://localhost:5000/api/messages";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // 2. Formater la date proprement
   const formatDate = (dateString: string | undefined | null) => {
@@ -40,7 +40,7 @@ export default function AdminMessagesPage() {
     const fetchMessages = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`${API_URL}/find`);
+        const res = await fetch(`${API_URL}/api/messages/find`);
         if (!res.ok) throw new Error("Erreur réseau");
         const data = await res.json();
 
@@ -68,7 +68,7 @@ export default function AdminMessagesPage() {
 
     try {
       // Appel API pour mettre à jour le statut en base de données
-      const res = await fetch(`${API_URL}/${msg._id}/read`, {
+      const res = await fetch(`${API_URL}/api/messages/${msg._id}/read`, {
         method: "PATCH",
       });
 
@@ -90,7 +90,7 @@ export default function AdminMessagesPage() {
     console.log("Tentative de suppression de l'ID :", id); // Debug
 
     try {
-      const res = await fetch(`${API_URL}/delete/${id}`, {
+      const res = await fetch(`${API_URL}/api/messages/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
