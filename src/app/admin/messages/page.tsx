@@ -6,8 +6,7 @@ import { Mail, Trash2, Loader2, Circle } from "lucide-react";
 
 // 1. Interface mise à jour
 interface Message {
-  _id?: string;
-  id?: string;
+  _id: string;
   name: string;
   phone: string;
   message: string;
@@ -85,7 +84,7 @@ export default function AdminMessagesPage() {
   };
 
   // 5. Supprimer un message
-  const handleDelete = async (id: string | number) => {
+  const handleDelete = async (id: string) => {
     if (!confirm("Supprimer définitivement ce message ?")) return;
 
     console.log("Tentative de suppression de l'ID :", id); // Debug
