@@ -6,7 +6,8 @@ import { Mail, Trash2, Loader2, Circle } from "lucide-react";
 
 // 1. Interface mise à jour
 interface Message {
-  _id: string;
+  _id?: string;
+  id?: string;
   name: string;
   phone: string;
   message: string;
@@ -100,7 +101,7 @@ export default function AdminMessagesPage() {
       if (res.ok) {
         console.log("Suppression réussie côté serveur");
         // On met à jour l'interface locale
-        setMessages((prev) => prev.filter((m) => (m._id || m.id) !== id));
+        setMessages((prev) => prev.filter((m) => m._id !== id));
         setSelectedMessage(null);
       } else {
         const errorData = await res.json();
