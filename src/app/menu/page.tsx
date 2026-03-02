@@ -24,13 +24,12 @@ const categoryIntros = {
   boisson: "Une sélection pointue de vins et spiritueux d’exception.",
 };
 
-const categories = [
+const categories: { id: Category; label: string }[] = [
   { id: "entree", label: "Entrées" },
   { id: "plat", label: "Plats" },
   { id: "dessert", label: "Desserts" },
   { id: "boisson", label: "Boissons" },
 ];
-
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState<Category>("entree");
   const [dishes, setDishes] = useState<DishType[]>([]);
