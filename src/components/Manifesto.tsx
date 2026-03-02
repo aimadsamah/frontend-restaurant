@@ -29,7 +29,7 @@ export default function Manifesto() {
                 Chef Aimad hh
               </span>
               <span className="text-[8px] uppercase tracking-[0.4em] text-stone-400 mt-1">
-                L'Âme du Jardin
+                L'etoile
               </span>
             </div>
           </div>
