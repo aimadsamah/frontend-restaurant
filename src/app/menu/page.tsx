@@ -8,11 +8,12 @@ interface DishType {
   _id: string;
   name: string;
   description: string;
-  price: number;
+  price: string;
   image: string;
   category: string;
   status: string;
 }
+type Category = "entree" | "plat" | "dessert" | "boisson";
 
 // On garde les intros car elles ne sont pas dans votre modèle BDD actuel
 const categoryIntros = {
@@ -31,7 +32,7 @@ const categories = [
 ];
 
 export default function Menu() {
-  const [activeCategory, setActiveCategory] = useState("entree");
+  const [activeCategory, setActiveCategory] = useState<Category>("entree");
   const [dishes, setDishes] = useState<DishType[]>([]);
   const [loading, setLoading] = useState(true);
 
