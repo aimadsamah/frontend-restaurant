@@ -26,7 +26,7 @@ export default function Manifesto() {
                 className="text-2xl md:text-3xl text-stone-700/90 italic"
                 style={{ fontFamily: "'Dancing Script', cursive" }}
               >
-                Chef Jean-Pierre
+                Chef Aimad hh
               </span>
               <span className="text-[8px] uppercase tracking-[0.4em] text-stone-400 mt-1">
                 L'Âme du Jardin
